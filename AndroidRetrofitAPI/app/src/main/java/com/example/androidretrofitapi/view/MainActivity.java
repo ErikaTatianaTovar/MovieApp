@@ -1,4 +1,4 @@
-package com.example.androidretrofitapi;
+package com.example.androidretrofitapi.view;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.androidretrofitapi.adapter.MovieAdapter;
+import com.example.androidretrofitapi.R;
+import com.example.androidretrofitapi.model.ApiMovie;
 import com.example.androidretrofitapi.model.Movie;
-import com.example.androidretrofitapi.network.ApiClient;
-import com.example.androidretrofitapi.network.ApiMovie;
+import com.example.androidretrofitapi.model.ApiClient;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
                 if (response.isSuccessful()){
-                    movies=response.body();
+                    movies = response.body();
                     MovieAdapter movieAdapter=new MovieAdapter(movies,getApplicationContext());
                     recyclerView.setAdapter(movieAdapter);
                 }
@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Movie>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error de conexión", Toast.LENGTH_SHORT).show();
+                String messageError = MainActivity.this.getApplicationContext().getString(R.string.connection_error);
+                Toast.makeText(MainActivity.this, messageError, Toast.LENGTH_SHORT).show();
             }
         });
     }

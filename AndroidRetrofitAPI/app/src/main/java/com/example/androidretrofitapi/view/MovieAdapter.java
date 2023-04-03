@@ -1,4 +1,4 @@
-package com.example.androidretrofitapi.adapter;
+package com.example.androidretrofitapi.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;

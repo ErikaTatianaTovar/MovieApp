@@ -1,5 +1,5 @@
 package com.example.androidretrofitapi.model;
-
+/*
 public class Movie {
     private String title;
     private String date;
@@ -47,3 +47,5 @@ public class Movie {
         this.coverPage = coverPage;
     }
 }
+
+ */

@@ -1,10 +1,10 @@
-package com.example.androidretrofitapi.network;
+package com.example.androidretrofitapi.model;
 
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient {
+/*public class ApiClient {
     private static Retrofit retrofit;
     public static Retrofit getClient(){
         retrofit = new Retrofit.Builder()
@@ -15,3 +15,5 @@ public class ApiClient {
     }
 
 }
+
+ */
