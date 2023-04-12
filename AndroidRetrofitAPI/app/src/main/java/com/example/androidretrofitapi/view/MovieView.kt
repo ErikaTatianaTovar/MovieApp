@@ -1,7 +1,8 @@
 package com.example.androidretrofitapi.view
 
-interface MovieView {
+import com.example.androidretrofitapi.model.Movie
 
-    void showMovie(movie: List<Movie>);
-    void getMovie();
+interface MovieView {
+    fun showMovie(movie: List<Movie>)
+    fun getMovie()
 }

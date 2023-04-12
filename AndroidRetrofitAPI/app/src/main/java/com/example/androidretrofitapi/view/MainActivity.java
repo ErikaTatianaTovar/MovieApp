@@ -18,7 +18,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+/*public class MainActivity extends AppCompatActivity {
     private List<Movie> movies;
     private RecyclerView recyclerView;
     private MovieAdapter movieAdapter;
@@ -52,3 +52,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
+
+
+ */
