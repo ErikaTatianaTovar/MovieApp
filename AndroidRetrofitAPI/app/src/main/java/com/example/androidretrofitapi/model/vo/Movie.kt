@@ -1,6 +1,6 @@
-package com.example.androidretrofitapi.model
+package com.example.androidretrofitapi.model.vo
 
-data class Movie (
+data class Movie(
     val title: String?,
     var date: String?,
     var duration: String?,

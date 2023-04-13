@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Aplicación de peliculas</string>
+    <string name="app_name">Fun Movies</string>
     <string name="connection_error">Error de conexión</string>
 </resources>

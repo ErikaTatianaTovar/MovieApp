@@ -1,4 +1,4 @@
-package com.example.androidretrofitapi.model
+package com.example.androidretrofitapi.model.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

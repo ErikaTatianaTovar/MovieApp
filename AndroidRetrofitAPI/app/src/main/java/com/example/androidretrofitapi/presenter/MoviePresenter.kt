@@ -1,8 +1,9 @@
 package com.example.androidretrofitapi.presenter
 
-import com.example.androidretrofitapi.model.Movie
+import com.example.androidretrofitapi.model.vo.Movie
 
 interface MoviePresenter {
-    fun showMovie(movie: List<Movie>)
-    fun getMovie()
+    fun setMovies(movies: List<Movie>)
+    fun getMovies()
+    fun sendError(messageError: String)
 }

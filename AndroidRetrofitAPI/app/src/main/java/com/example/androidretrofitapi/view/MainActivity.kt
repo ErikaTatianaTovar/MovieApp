@@ -2,45 +2,34 @@ package com.example.androidretrofitapi.view
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidretrofitapi.model.Movie
+import com.example.androidretrofitapi.model.vo.Movie
 import android.os.Bundle
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.androidretrofitapi.R
-import com.example.androidretrofitapi.model.ApiClient
-import com.example.androidretrofitapi.model.ApiMovie
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.androidretrofitapi.presenter.MoviePresenter
+import com.example.androidretrofitapi.presenter.MoviePresenterImpl
 
-class MainActivity : AppCompatActivity() {
-    private var movies: List<Movie>? = null
-    private lateinit var recyclerView: RecyclerView
-    private var movieAdapter: MovieAdapter? = null
+class MainActivity : AppCompatActivity(), MovieView {
+
+    private var moviePresenter: MoviePresenter? = null
+    private lateinit var rvMovie: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        recyclerView = findViewById(R.id.rv_movies)
-        recyclerView.layoutManager = GridLayoutManager(applicationContext, 2)
-        showMovies()
+        rvMovie = findViewById(R.id.rv_movies)
+        rvMovie.layoutManager = GridLayoutManager(applicationContext, 2)
+        getMovies()
     }
 
-    private fun showMovies() {
-        val call: Call<List<Movie>> = ApiClient.getClient().create(ApiMovie::class.java).getMovies()
-        call.enqueue(object : Callback<List<Movie>> {
-            override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
-                if (response.isSuccessful) {
-                    movies = response.body()
-                    val movieAdapter = MovieAdapter(movies, applicationContext)
-                    recyclerView.adapter = movieAdapter
-                }
-            }
+    private fun getMovies(){
+        moviePresenter = MoviePresenterImpl(this).also {
+            it.getMovies()
+        }
+    }
 
-            override fun onFailure(call: Call<List<Movie>>, t: Throwable) {
-                val messageError = applicationContext.getString(R.string.connection_error)
-                Toast.makeText(this@MainActivity, messageError, Toast.LENGTH_SHORT).show()
-            }
-        })
+    override fun showMovies(movies: List<Movie>) {
+        val movieAdapter = MovieAdapter(movies, applicationContext)
+        rvMovie.adapter = movieAdapter
     }
 }
